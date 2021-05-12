@@ -7,3 +7,5 @@
 **/bin/
 **/config/
 **/.config/
+
+application-oauth.yml
