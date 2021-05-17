@@ -1,11 +1,11 @@
 .gradle
 .idea
-.class
-**/.classpath
-
-**/build/
-**/bin/
-**/config/
-**/.config/
+#.class
+#**/.classpath
+#
+#**/build/
+#**/bin/
+#**/config/
+#**/.config/
 
 application-oauth.yml
