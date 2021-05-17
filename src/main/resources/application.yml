@@ -1,4 +1,9 @@
 spring:
+  profiles:
+#    active: local
+    include: oauth
+
+
   jpa:
     show_sql: true
     properties:
@@ -8,3 +13,7 @@ spring:
   h2:
     console:
       enabled: true
+
+
+  session:
+    store-type: jdbc
