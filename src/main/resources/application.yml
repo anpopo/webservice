@@ -1,37 +1,58 @@
 spring:
   profiles:
-    active: real
-    include:
-      - oauth
+    active: prod
 
   jpa:
-    show_sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        storage_engine: innodb
 
   session:
     store-type: jdbc
-
 ---
-
 spring:
-  profiles: real
-
-  jpa:
-    hibernate:
-      ddl-auto: none
-
-  datasource:
-    hikari:
-      jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
-      driver-class-name: org.mariadb.jdbc.Driver
-
+  profiles:
+    group:
+      "local": "testdb"
 ---
-
 spring:
-  profiles: test
+  profiles:
+    group:
+      "dev": "testdb"
+---
+spring:
+  profiles:
+    group:
+      "prod": "proddb"
+---
+spring:
+  config:
+    activate:
+      on-profile: "testdb"
 
   h2:
     console:
       enabled: true
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
+      username: sa
+      driver-class-name: org.h2.Driver
+---
+spring:
+  config:
+    activate:
+      on-profile: "proddb"
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+  prod:
+    datasource:
+      hikari:
+        jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
+        driver-class-name: org.mariadb.jdbc.Driver
+
+
