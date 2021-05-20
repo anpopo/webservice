@@ -11,8 +11,7 @@ public class Application {
 
     private static final String PROPERTIES =
             "spring.config.location="
-                    +"classpath:/application.yml"
-                    +",classpath:/application-oauth.yml";
+                    +"classpath:/application.yml";
 
     public static void main(String[] args) {
 
