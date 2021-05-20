@@ -23,8 +23,9 @@ spring:
       ddl-auto: none
 
   datasource:
-    url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
-    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
+      driver-class-name: org.mariadb.jdbc.Driver
 
 ---
 
