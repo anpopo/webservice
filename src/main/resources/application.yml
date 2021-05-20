@@ -1,8 +1,8 @@
 spring:
   profiles:
-#    active: local
-    include: oauth
-
+    active: real
+    include:
+      - oauth
 
   jpa:
     show_sql: true
@@ -10,10 +10,27 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
+  session:
+    store-type: jdbc
+
+---
+
+spring:
+  profiles: real
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+    url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
+    driver-class-name: org.mariadb.jdbc.Driver
+
+---
+
+spring:
+  profiles: test
+
   h2:
     console:
       enabled: true
-
-
-  session:
-    store-type: jdbc
