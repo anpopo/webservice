@@ -1,13 +1,13 @@
 package com.anpopo.web.dto;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class HelloResponseDtoTest {
 
-    @Test
+    
     public void 롬복_기능_테스트() {
         // given
         String name = "test";
