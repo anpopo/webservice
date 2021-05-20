@@ -1,8 +1,8 @@
 spring:
   profiles:
-#    active: local
-    include: oauth
-
+    active: test
+    include:
+      - oauth
 
   jpa:
     show_sql: true
@@ -10,10 +10,21 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
+  session:
+    store-type: jdbc
+
+---
+
+spring:
+  profiles: real
+  include:
+    - real-db
+
+---
+
+spring:
+  profiles: test
+
   h2:
     console:
       enabled: true
-
-
-  session:
-    store-type: jdbc

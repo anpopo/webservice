@@ -28,19 +28,32 @@ repositories {
 }
 
 dependencies {
+    // web
     compile('org.springframework.boot:spring-boot-starter-web')
+
+    // test
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
+    // lombok
     annotationProcessor("org.projectlombok:lombok")
     compileOnly("org.projectlombok:lombok")
 
+    // jpa
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    // h2
     compile('com.h2database:h2')
+
+    // mustache
     compile('org.springframework.boot:spring-boot-starter-mustache')
 
+    // oauth
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
     compile('org.springframework.session:spring-session-jdbc')
 
+    // security test
     testCompile('org.springframework.security:spring-security-test')
 
+    // MariaDB
+    compile('org.mariadb.jdbc:mariadb-java-client')
 }
