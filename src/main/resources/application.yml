@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: test
+    active: real
     include:
       - oauth
 
@@ -17,8 +17,14 @@ spring:
 
 spring:
   profiles: real
-  include:
-    - real-db
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+    url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
+    driver-class-name: org.mariadb.jdbc.Driver
 
 ---
 
