@@ -50,10 +50,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
   prod:
     datasource:
       hikari:
-        jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com:3306/webservice
+        jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com/webservice?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF8&useUnicode=true
         driver-class-name: org.mariadb.jdbc.Driver
 
 
