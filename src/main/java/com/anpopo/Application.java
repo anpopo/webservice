@@ -9,14 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 public class Application {
 
-    private static final String PROPERTIES =
-            "spring.config.location="
-                    +"classpath:/application.yml";
-
     public static void main(String[] args) {
-
-        new SpringApplicationBuilder(Application.class)
-                .properties(PROPERTIES)
-                .run(args);
+        SpringApplication.run(Application.class, args);
     }
 }

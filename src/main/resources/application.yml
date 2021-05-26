@@ -3,34 +3,47 @@ spring:
     active: prod
 
   jpa:
+    show_sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL57Dialect
-        storage_engine: innodb
+        format_sql: true
+
+    hibernate:
+      ddl-auto: none
+      default_batch_fetch_size: 100
+      storage_engine: innodb
 
   session:
     store-type: jdbc
 
 ---
+
 spring:
   profiles:
     group:
-      "local": "testdb,oauth"
+      local: [testdb,oauth]
+
 ---
+
 spring:
   profiles:
     group:
-      "dev": "testdb,oauth"
+      dev: [testdb,oauth]
+
 ---
+
 spring:
   profiles:
     group:
-      "prod": "proddb,oauth"
+      prod: [proddb,oauth]
+
 ---
+
 spring:
   config:
     activate:
-      on-profile: "testdb"
+      on-profile: testdb
 
   h2:
     console:
@@ -39,22 +52,23 @@ spring:
   datasource:
     hikari:
       jdbc-url: jdbc:h2:mem:testdb;MODE=MYSQL
-      username: sa
       driver-class-name: org.h2.Driver
+      username: sa
+
 ---
+
 spring:
   config:
     activate:
-      on-profile: "proddb"
+      on-profile: proddb
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com/webservice?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF8&useUnicode=true
+      driver-class-name: org.mariadb.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: none
-      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
-  prod:
-    datasource:
-      hikari:
-        jdbc-url: jdbc:mariadb://webservice.cbrmosdukjmp.ap-northeast-2.rds.amazonaws.com/webservice?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF8&useUnicode=true
-        driver-class-name: org.mariadb.jdbc.Driver
-
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
