@@ -13,13 +13,18 @@ import javax.persistence.*;
 public class Posts extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
-    @Column(length = 500, nullable = false)
+
+    @Column(name = "TITLE", length = 500, nullable = false)
     private String title;
-    @Column(columnDefinition = "TEXT", nullable = false)
+
+    @Column(name = "CONTENT", columnDefinition = "TEXT", nullable = false)
     private String content;
 
+    @Column(name = "AUTHOR", nullable = false)
     private String author;
+
     @Builder
     public Posts(String title, String content, String author) {
         this.title = title;
