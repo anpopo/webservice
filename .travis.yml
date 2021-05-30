@@ -16,7 +16,7 @@ script: "./gradlew clean build"
 
 
 before_deploy:
-  - zip -r webservice
+  - zip -r webservice *
   - mkdir -p deploy
   - my webservice.zip deploy/webservice.zip
 
